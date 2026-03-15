@@ -23,5 +23,28 @@
     <div class="layout1"></div>
     <div class="layout2"></div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const passwordField = document.querySelector('input[name="password"]');
+    const confirmPasswordField = document.querySelector('input[name="password2"]');
+
+    // Function to prevent pasting
+    const preventPaste = (e) => {
+        e.preventDefault();
+        alert('کپی کردن در این فیلد مجاز نیست. لطفاً رمز عبور را دستی وارد کنید.');
+    };
+
+    // Add event listener for paste event
+    if (passwordField) {
+        passwordField.addEventListener('paste', preventPaste);
+    }
+    if (confirmPasswordField) {
+        confirmPasswordField.addEventListener('paste', preventPaste);
+    }
+});
+
+</script>
+
 </body>
 </html>
