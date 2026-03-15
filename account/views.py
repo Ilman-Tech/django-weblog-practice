@@ -4,14 +4,16 @@ from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def user_login(request):
+    print('hi my name is def user_login ヾ(•ω•`)o')
+    if request.user.is_authenticated:
+        return redirect('home')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        if username.endswith('.com') and '@' in username:
-            user = authenticate(email=username, password=password)
-        else:
-            user = authenticate(request, username=username, password=password)
+
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
