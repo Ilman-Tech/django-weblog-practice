@@ -1,0 +1,14 @@
+.email {
+    background: none;
+    border: none;
+    margin: 20px auto;
+    display: block;
+    padding: 18px 14px;
+    border: 2px solid rgba(131, 155, 175, 0.5);
+    border-radius: 24px;
+    text-align: center;
+
+    width: 200px;
+    outline: none;
+    transition: .25s;
+}

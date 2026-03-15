@@ -23,3 +23,13 @@ def user_login(request):
         request,
         'account/login.html',
     )
+
+def user_register(request):
+
+    return render(
+        request,
+        "account/register.html",
+        context={
+
+        }
+    )

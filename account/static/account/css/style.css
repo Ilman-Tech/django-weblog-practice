@@ -20,7 +20,7 @@ body {
     transition: 2s;
 }
 
-.box input[type= "text"] , .box input[type= "password"] {
+.box input[type= "text"], .box input[type= "password"] {
     background: none;
     border: none;
     margin: 20px auto;
@@ -29,7 +29,7 @@ body {
     border: 2px solid rgba(131, 155, 175, 0.5);
     border-radius: 24px;
     text-align: center;
-    
+
     width: 200px;
     outline: none;
     transition: .25s;
@@ -41,10 +41,10 @@ body {
     color: #fff;
 }
 
-.box input[type= "text"]:focus , .box input[type= "password"]:focus {
+.box input[type= "text"]:focus, .box input[type= "password"]:focus {
     width: 230px;
 }
- 
+
 .box input[type= "submit"] {
     border: none;
     background: none;
