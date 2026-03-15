@@ -12,13 +12,21 @@
 
 <section>
     <form action="" class="box" method="post">
+        {% csrf_token %}
         <h1>Register</h1>
+
+        {% if messages %}
+            {% for m in messages %}
+                <div class="alert">{{ m }}</div>
+            {% endfor %}
+        {% endif %}
+
         <input type="text" placeholder="Username..." name="username"><br>
         <input type="email" placeholder="email..." name="email" class="email"><br>
         <input type="password" placeholder="password" name="password"><br>
         <input type="password" placeholder="Confrin password" name="password2"><br>
         <input type="submit" value="register">
-        {% csrf_token %}
+
     </form>
     <div class="layout1"></div>
     <div class="layout2"></div>
@@ -26,23 +34,23 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-    const passwordField = document.querySelector('input[name="password"]');
-    const confirmPasswordField = document.querySelector('input[name="password2"]');
+        const passwordField = document.querySelector('input[name="password"]');
+        const confirmPasswordField = document.querySelector('input[name="password2"]');
 
-    // Function to prevent pasting
-    const preventPaste = (e) => {
-        e.preventDefault();
-        alert('کپی کردن در این فیلد مجاز نیست. لطفاً رمز عبور را دستی وارد کنید.');
-    };
+        // Function to prevent pasting
+        const preventPaste = (e) => {
+            e.preventDefault();
+            alert('کپی کردن در این فیلد مجاز نیست. لطفاً رمز عبور را دستی وارد کنید.');
+        };
 
-    // Add event listener for paste event
-    if (passwordField) {
-        passwordField.addEventListener('paste', preventPaste);
-    }
-    if (confirmPasswordField) {
-        confirmPasswordField.addEventListener('paste', preventPaste);
-    }
-});
+        // Add event listener for paste event
+        if (passwordField) {
+            passwordField.addEventListener('paste', preventPaste);
+        }
+        if (confirmPasswordField) {
+            confirmPasswordField.addEventListener('paste', preventPaste);
+        }
+    });
 
 </script>
 
