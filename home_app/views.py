@@ -10,4 +10,4 @@ def home(request):
 
 def log_out(request):
     logout(request)
-    return redirect('login')
+    return redirect('account:login')
