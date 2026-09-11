@@ -19,7 +19,6 @@ def blog_list(request):
 
     if category:
         cat = get_object_or_404(Category, pk=category)
-        # blog = BlogPost.objects.filter(category__title=category)
         blog = cat.blog_posts.all()
     else:
         blog = BlogPost.objects.all()
