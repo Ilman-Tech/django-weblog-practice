@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-gx(vx%%4#pr$apl&uz!4z=gb%g0k=pij690!#qv))$-b+irfco
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
+
 
 
 # Application definition
@@ -60,13 +61,14 @@ ROOT_URLCONF = 'weblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'context-processor.context_processor.recent'
             ],
         },
     },
@@ -125,6 +127,7 @@ STATICFILES_DIRS = [join(BASE_DIR, 'assets')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

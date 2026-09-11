@@ -711,6 +711,12 @@ ul.page-numbers li a:hover {
 	color: #aaa;
 }
 
+.sidebar .recent-posts ul {
+    width: 100%;
+    height: 20rem;
+    overflow-y: scroll;
+}
+
 .sidebar .recent-posts ul li {
 	margin-bottom: 15px;
 	padding-bottom: 15px;

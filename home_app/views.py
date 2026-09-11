@@ -8,7 +8,8 @@ def home(request):
         request,
         'home_app/index.html',
         context={
-            'articel': BlogPost.objects.all(),
+            'articels_most_likes': BlogPost.obj.most_likes(),
+            'articel_offr_admin' : BlogPost.obj.offers_admin(),
         }
     )
 

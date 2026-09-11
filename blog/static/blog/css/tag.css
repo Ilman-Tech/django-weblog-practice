@@ -1,0 +1,27 @@
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.post-tags li {
+    margin: 0;
+}
+
+.post-tags li a.category-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid #eeeeee;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #7a7a7a;
+    background: #f8f8f8;
+    transition: all 0.2s ease;
+}
+
+.post-tags li a.category-tag:hover {
+    color: #f48840;
+    border-color: #f48840;
+    background: #fff;
+}

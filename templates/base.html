@@ -1,0 +1,56 @@
+{#file -> base.html#}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Tag -->
+    {% include 'includes/meta-tag.html' %}
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+    <!-- Bootstrap core CSS -->
+    {% include "includes/css-link.html" %}
+
+    {% block css %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<!-- Header -->
+{% include 'includes/header.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+<!-- Footer Tag -->
+{% include 'includes/footer.html' %}
+
+<!-- Js Tag -->
+{% include 'includes/js-src.html' %}
+
+</body>
+</html>
