@@ -1,4 +1,45 @@
-db.sqlite3
-.idea
+# Python
+__pycache__/
+*.py[cod]
+*.so
 
-*.pyc
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+*.sqlite3
+
+# Media / collected static files
+media/
+staticfiles/
+
+# IDE
+.vscode/
+.idea/
+
+# Coverage / tests
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+.hypothesis/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Database / temporary files
+*.db
+*.pid
