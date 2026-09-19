@@ -20,11 +20,17 @@ def blog_list(request):
 
     page_obj = p.get_page(page_number)
 
+    page_range = range(
+        max(1, page_obj.number - 1),
+        min(page_obj.paginator.num_pages , page_obj.number +1 ) +1,
+    )
+
     return render(
         request,
         'blog/blog_list.html',
         {
             'page_obj' : page_obj,
+            'page_range' : page_range,
         }
     )
 
