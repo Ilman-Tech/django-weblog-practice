@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.models import BlogPost, Category
 
 
@@ -14,20 +14,17 @@ def blog_detail(request, slug):
     )
 
 def blog_list(request):
+    p = Paginator(BlogPost.objects.all(), 2)
 
-    category = request.GET.get('category')
+    page_number = request.GET.get('page')
 
-    if category:
-        cat = get_object_or_404(Category, pk=category)
-        blog = cat.blog_posts.all()
-    else:
-        blog = BlogPost.objects.all()
+    page_obj = p.get_page(page_number)
 
-    context = {
-        'blogs' : blog,
-    }
     return render(
         request,
         'blog/blog_list.html',
-        context=context
+        {
+            'page_obj' : page_obj,
+        }
     )
+
