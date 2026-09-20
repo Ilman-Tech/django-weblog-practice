@@ -14,9 +14,25 @@ def blog_detail(request, slug):
     )
 
 def blog_list(request):
-    p = Paginator(BlogPost.objects.all(), 2)
-
+    items = request.GET.get('items', '2')
     page_number = request.GET.get('page')
+
+    if items == 'all':
+        page_objects = BlogPost.objects.all().order_by('-id')
+        return render(
+            request,
+            'blog/blog_list.html',
+            context={
+                'page_obj': page_objects,
+                'page_range': None,
+                "items": items,
+            }
+        )
+
+    try:
+        p = Paginator(BlogPost.objects.all(), int(items))
+    except ValueError:
+        p = Paginator(BlogPost.objects.all(), 2)
 
     page_obj = p.get_page(page_number)
 
@@ -31,6 +47,7 @@ def blog_list(request):
         {
             'page_obj' : page_obj,
             'page_range' : page_range,
+            "items" : items,
         }
     )
 
