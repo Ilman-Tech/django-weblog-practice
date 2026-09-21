@@ -54,7 +54,7 @@
                     <div class="content">
                         <ul style="width: 100%; height: 15rem; overflow-y: scroll">
                             {% for category in categorys %}
-                                <li><a href="{% url 'blog:blog_list'%}?category={{ category.id }}">-{{ category.title }}</a></li>
+                                <li><a href="{% url 'blog:blog_list'%}?category={{ category.id }}&page=1&items={{ items }}">-{{ category.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>

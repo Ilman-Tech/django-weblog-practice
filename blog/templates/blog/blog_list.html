@@ -142,25 +142,29 @@
                                     <ul class="page-numbers">
                                         {% if page_obj.has_previous %}
                                             <li>
-                                                <a href="?page={{ page_obj.previous_page_number }}&items={{ items|default:2 }}"><i
+                                                <a href="?category={{ request.GET.category }}&page={{ page_obj.previous_page_number }}&items={{ items|default:2 }}"><i
                                                         class="fa fa-angle-double-left"></i></a></li>
                                         {% endif %}
 
                                         {% for page in page_range %}
                                             <li class="{% if page == page_obj.number %}active{% endif %} ">
-                                                <a href="?page={{ page }}&items={{ items|default:2 }}">{{ page }}</a>
+                                                <a href="?category={{ request.GET.category }}&page={{ page }}&items={{ items|default:2 }}">{{ page }}</a>
                                             </li>
                                         {% endfor %}
 
                                         {% if page_obj.has_next %}
                                             <li>
-                                                <a href="?page={{ page_obj.next_page_number }}&items={{ items|default:2 }}"><i
+                                                <a href="?category={{ request.GET.category }}&page={{ page_obj.next_page_number }}&items={{ items|default:2 }}"><i
                                                         class="fa fa-angle-double-right"></i></a></li>
                                         {% endif %}
                                     </ul>
                                     <div class="pagination-select">
                                         <form method="get" class="d-inline">
-                                            <label for="items">نمایش در هر صفحه</label>
+
+                                            <input type="hidden" name="category" value="{{ request.GET.category }}">
+                                            <input type="hidden" name="page" value="1">
+
+                                            <label for="items">Show page</label>
 
                                             <select id="items" name="items" onchange="this.form.submit()">
                                                 <option value="2" {% if request.GET.items == "2" %}selected{% endif %}>
@@ -170,7 +174,7 @@
                                                     5
                                                 </option>
                                                 <option value="all"
-                                                        {% if request.GET.items == "all" %}selected{% endif %}>همه
+                                                        {% if request.GET.items == "all" %}selected{% endif %}>all
                                                 </option>
                                             </select>
                                         </form>
