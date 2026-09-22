@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -62,4 +62,10 @@ def user_register(request):
     return render(
         request,
         "account/register.html",
+    )
+
+def user_profile(request):
+    logout(request)
+    return redirect(
+        'home_app:home',
     )
