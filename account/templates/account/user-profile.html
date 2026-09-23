@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    profile - {{ request.user.username }}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'account/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="profile-section mt-5">
+        <div class="container">
+            <div class="profile-card">
+
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        {{ request.user.username|first|upper }}
+                    </div>
+
+                    <div>
+                        <h2>{{ request.user.username }}</h2>
+                        <p>Manage your account information</p>
+                    </div>
+                </div>
+
+                <div class="profile-divider"></div>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="profile-form">
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    value="{{ request.user.username }}"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">firstname</label>
+                            <input
+                                    type="text"
+                                    id="firstname"
+                                    name="firstname"
+                                    {% if request.user.first_name %} value="{{ request.user.first_name }}" {% else %} placeholder="please enter firstname" {% endif %}
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">lastname</label>
+                            <input
+                                    type="text"
+                                    id="lastname"
+                                    name="lastname"
+                                    {% if request.user.last_name %} value="{{ request.user.last_name }}" {% else %} placeholder="please enter lastname" {% endif %}
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" {% if request.user.email %}
+                                   value="{{ request.user.email }}" {% else %}
+                                   placeholder="Please Enter your Email..." {% endif %}>
+                        </div>
+
+                    </div>
+
+                    <div class="profile-actions">
+                        <button type="submit">Save Changes</button>
+                        <button type="button">Change Password</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -65,7 +65,18 @@ def user_register(request):
     )
 
 def user_profile(request):
-    logout(request)
-    return redirect(
-        'home_app:home',
+
+    if request.method == 'POST':
+        user = request.user
+
+        user.username = request.POST.get('username')
+        user.first_name = request.POST.get('firstname')
+        user.last_name = request.POST.get('lastname')
+        user.email = request.POST.get('email')
+
+        user.save()
+
+    return render(
+        request,
+        'account/user-profile.html'
     )
