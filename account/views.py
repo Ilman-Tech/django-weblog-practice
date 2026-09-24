@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -67,14 +67,37 @@ def user_register(request):
 def user_profile(request):
 
     if request.method == 'POST':
-        user = request.user
+        if request.method == 'POST':
+            user = request.user
 
-        user.username = request.POST.get('username')
-        user.first_name = request.POST.get('firstname')
-        user.last_name = request.POST.get('lastname')
-        user.email = request.POST.get('email')
+            username = request.POST.get('username')
+            first_name = request.POST.get('firstname')
+            last_name = request.POST.get('lastname')
+            email = request.POST.get("email")
 
-        user.save()
+            if User.objects.filter(username=username).exclude(id=user.id).exists():
+                return JsonResponse({
+                    'success': False,
+                    'message': 'This username is already taken',
+                })
+
+            if User.objects.filter(email=email).exclude(id=user.id).exists():
+                return JsonResponse({
+                    'success' : False,
+                    'message' : 'This email is already taken'
+                })
+
+            user.username = username
+            user.first_name = first_name
+            user.last_name = last_name
+            user.email = email
+
+            user.save()
+
+            return JsonResponse({
+                'success': True,
+                'message': 'User profile updated',
+            })
 
     return render(
         request,
