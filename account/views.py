@@ -87,6 +87,12 @@ def user_profile(request):
                     'message' : 'This email is already taken'
                 })
 
+            if email and not email.endswith(('@gmail.com', '@yahoo.com', '@outlook.com')):
+                return JsonResponse({
+                    'success' : False,
+                    'message' : 'Invalid email',
+                })
+
             user.username = username
             user.first_name = first_name
             user.last_name = last_name
@@ -97,6 +103,7 @@ def user_profile(request):
             return JsonResponse({
                 'success': True,
                 'message': 'User profile updated',
+                'username': user.username,
             })
 
     return render(
